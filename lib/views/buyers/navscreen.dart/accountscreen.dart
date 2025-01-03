@@ -95,10 +95,11 @@ class AccountScreen extends StatelessWidget {
                 ListTile(
                   onTap: () async {
                     await _auth.signOut().whenComplete(() {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return LoginScreen();
-                      }));
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                        (Route<dynamic> route) => false,
+                      );
                     });
                   },
                   leading: FaIcon(FontAwesomeIcons.signOutAlt),

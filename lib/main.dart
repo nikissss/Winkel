@@ -1,3 +1,4 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 // import 'package:multi_vendor_app/Pages/loginpage.dart';
 import 'package:multi_vendor_app/Pages/registerpage.dart';
+import 'package:multi_vendor_app/mainlogin_screen.dart';
 import 'package:multi_vendor_app/provider/cart_provider.dart';
 import 'package:multi_vendor_app/provider/product_provider.dart';
 import 'package:multi_vendor_app/vendor/views/screens/main_vendor_screen.dart';
@@ -43,7 +45,19 @@ class MyApp extends StatelessWidget {
       // home: const MyHomePage(title: 'Winkle'),
       //home: MainScreen(),
       //home: MainVendorScreen(),
-      home: LoginScreen(),
+      // home: LoginScreen(),
+      //home: SplashScreen(),
+      home: AnimatedSplashScreen(
+        duration: 3000,
+        splash: SizedBox(
+          width: 100, // Adjust width
+          height: 100, // Adjust height
+          child: Image.asset('assets/logo.png'), // Replace with your image path
+        ),
+        nextScreen: MainloginScreen(),
+        splashTransition: SplashTransition.fadeTransition,
+        backgroundColor: Color.fromARGB(255, 218, 193, 174),
+      ),
       builder: EasyLoading.init(),
     );
   }
