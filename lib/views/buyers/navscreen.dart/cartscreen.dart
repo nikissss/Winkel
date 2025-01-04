@@ -202,6 +202,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_vendor_app/provider/cart_provider.dart';
+import 'package:multi_vendor_app/views/buyers/payment/api.dart';
+import 'package:multi_vendor_app/views/buyers/payment/khaltipayment.dart';
 import 'package:provider/provider.dart';
 
 class CartScreen extends StatelessWidget {
@@ -255,87 +257,90 @@ class CartScreen extends StatelessWidget {
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(16.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      cartData.productName,
-                                      style: const TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        letterSpacing: 5,
-                                      ),
-                                    ),
-                                    Text(
-                                      '\S ${cartData.price.toStringAsFixed(2)}',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        letterSpacing: 5,
-                                        color: Colors.yellow.shade900,
-                                      ),
-                                    ),
-                                    OutlinedButton(
-                                      onPressed: null,
-                                      child: Text(cartData.productSize),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Container(
-                                          height: 30,
-                                          width: 170,
-                                          decoration: BoxDecoration(
-                                            color: Colors.red.shade400,
-                                          ),
-                                          child: Row(
-                                            children: [
-                                              IconButton(
-                                                onPressed:
-                                                    cartData.quantity == 1
-                                                        ? null
-                                                        : () {
-                                                            _cartProvider
-                                                                .decreement(
-                                                                    cartData);
-                                                          },
-                                                icon: const Icon(
-                                                  CupertinoIcons.minus,
-                                                  color: Colors.white,
-                                                  size: 15,
-                                                ),
-                                              ),
-                                              Text(
-                                                cartData.quantity.toString(),
-                                                style: const TextStyle(
-                                                    color: Colors.white),
-                                              ),
-                                              IconButton(
-                                                onPressed: () {
-                                                  _cartProvider
-                                                      .increement(cartData);
-                                                },
-                                                icon: const Icon(
-                                                  CupertinoIcons.plus,
-                                                  color: Colors.white,
-                                                  size: 15,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        cartData.productName,
+                                        style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: 5,
                                         ),
-                                        IconButton(
-                                          onPressed: () {
-                                            _cartProvider.removeItem(
-                                              cartData.productId,
-                                            );
-                                          },
-                                          icon: const Icon(
-                                            CupertinoIcons.cart_badge_minus,
+                                      ),
+                                      Text(
+                                        '\S ${cartData.price.toStringAsFixed(2)}',
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: 5,
+                                          color: Colors.yellow.shade900,
+                                        ),
+                                      ),
+                                      OutlinedButton(
+                                        onPressed: null,
+                                        child: Text(cartData.productSize),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Container(
+                                            height: 30,
+                                            width: 170,
+                                            decoration: BoxDecoration(
+                                              color: Colors.red.shade400,
+                                            ),
+                                            child: Row(
+                                              children: [
+                                                IconButton(
+                                                  onPressed:
+                                                      cartData.quantity == 1
+                                                          ? null
+                                                          : () {
+                                                              _cartProvider
+                                                                  .decreement(
+                                                                      cartData);
+                                                            },
+                                                  icon: const Icon(
+                                                    CupertinoIcons.minus,
+                                                    color: Colors.white,
+                                                    size: 15,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  cartData.quantity.toString(),
+                                                  style: const TextStyle(
+                                                      color: Colors.white),
+                                                ),
+                                                IconButton(
+                                                  onPressed: () {
+                                                    _cartProvider
+                                                        .increement(cartData);
+                                                  },
+                                                  icon: const Icon(
+                                                    CupertinoIcons.plus,
+                                                    color: Colors.white,
+                                                    size: 15,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
-                                        )
-                                      ],
-                                    ),
-                                  ],
+                                          IconButton(
+                                            onPressed: () {
+                                              _cartProvider.removeItem(
+                                                cartData.productId,
+                                              );
+                                            },
+                                            icon: const Icon(
+                                              CupertinoIcons.cart_badge_minus,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               )
                             ],
@@ -388,15 +393,82 @@ class CartScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Center(
-                child: Text(
-                  '\$${_cartProvider.totalPrice.toStringAsFixed(2)}\nCHECKOUT',
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    letterSpacing: 8,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                // child: Text(
+                //   '\$${_cartProvider.totalPrice.toStringAsFixed(2)}\nCHECKOUT',
+                //   textAlign: TextAlign.center,
+                //   style: const TextStyle(
+                //     color: Colors.white,
+                //     letterSpacing: 8,
+                //     fontSize: 18,
+                //     fontWeight: FontWeight.bold,
+                //   ),
+                // ),
+                //   child: TextButton(
+                //     child: Text(
+                //       '\$${_cartProvider.totalPrice.toStringAsFixed(2)}\nCHECKOUT',
+                //       textAlign: TextAlign.center,
+                //       style: const TextStyle(
+                //         color: Colors.white,
+                //         letterSpacing: 8,
+                //         fontSize: 18,
+                //         fontWeight: FontWeight.bold,
+                //       ),
+                //     ),
+                //     onPressed: () {
+                //       // Navigator.push(context,
+                //       //     MaterialPageRoute(builder: (context) => LoginScreen()));
+                //       void onKhaltiPressed() async {
+                //         var response = await fetchPID(_cartProvider.totalPrice);
+                //         // var publicKey= await
+                //         if (response.containsKey("error")) {
+                //           print("khalti error: ${response["error"]}");
+                //           // TODO: toast error
+                //           return;
+                //         }
+                //         if (context.mounted) {
+                //           Navigator.push(
+                //               context,
+                //               MaterialPageRoute(
+                //                   builder: (context) => KhaltiPaymentPage(
+                //                         response: response,
+                //                         onPaymentSuccessful: () {},
+                //                       )));
+                //         }
+                //       }
+                //     },
+                //   ),
+                child: TextButton(
+                  child: Text(
+                    '\$${_cartProvider.totalPrice.toStringAsFixed(2)}\nCHECKOUT',
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      letterSpacing: 8,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
+                  onPressed: () async {
+                    var response = await fetchPID(_cartProvider.totalPrice);
+                    if (response.containsKey("error")) {
+                      print("khalti error: ${response["error"]}");
+                      // TODO: Add error handling or a toast message
+                      return;
+                    }
+                    if (context.mounted) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => KhaltiPaymentPage(
+                            response: response,
+                            onPaymentSuccessful: () {
+                              // Handle successful payment
+                            },
+                          ),
+                        ),
+                      );
+                    }
+                  },
                 ),
               ),
             ),

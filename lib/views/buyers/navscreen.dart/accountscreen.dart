@@ -3,7 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:multi_vendor_app/views/buyers/auth/login_screen.dart';
+import 'package:multi_vendor_app/mainlogin_screen.dart';
+// import 'package:multi_vendor_app/views/buyers/auth/login_screen.dart';
 
 class AccountScreen extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -97,7 +98,8 @@ class AccountScreen extends StatelessWidget {
                     await _auth.signOut().whenComplete(() {
                       Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                        MaterialPageRoute(
+                            builder: (context) => MainloginScreen()),
                         (Route<dynamic> route) => false,
                       );
                     });

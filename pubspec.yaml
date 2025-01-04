@@ -36,15 +36,15 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.0.10+1
-  firebase_core: ^3.6.0
-  cloud_firestore: ^5.4.4
-  firebase_auth: ^5.3.1
-  firebase_storage: ^12.3.4
+  firebase_core: any
+  cloud_firestore: any
+  firebase_auth: any
+  firebase_storage: any
   image_picker: ^1.1.2
-  firebase_app_check: ^0.3.1+4
-  cached_network_image: ^3.4.1
+  firebase_app_check: any
+  cached_network_image: any
   shimmer_animation: ^2.2.1
-  firebase_ui_auth: ^1.16.0
+  firebase_ui_auth: any
   country_state_city_picker: ^1.2.8
   flutter_easyloading: ^3.0.5
   font_awesome_flutter: ^10.8.0
@@ -53,7 +53,8 @@ dependencies:
   uuid: ^4.5.1
   photo_view: ^0.15.0
   animated_splash_screen: ^1.1.0
-  khalti: ^2.0.0
+  khalti: any
+  khalti_checkout_flutter: ^1.0.0-dev.7
 
 
 dependency_overrides:

@@ -55,6 +55,7 @@ class MyApp extends StatelessWidget {
           child: Image.asset('assets/logo.png'), // Replace with your image path
         ),
         nextScreen: MainloginScreen(),
+        // MainScreen(),
         splashTransition: SplashTransition.fadeTransition,
         backgroundColor: Color.fromARGB(255, 218, 193, 174),
       ),
