@@ -55,6 +55,16 @@ dependencies:
   animated_splash_screen: ^1.1.0
   khalti: any
   khalti_checkout_flutter: ^1.0.0-dev.7
+  flutter_slidable: ^3.1.2
+  google_fonts: ^6.2.1
+  get: ^4.6.6
+  speech_to_text: ^6.6.0
+  
+  flutter_map: ^6.1.0
+  latlong2: ^0.9.1
+  riverpod: ^2.6.1
+  flutter_stripe: ^11.3.0
+  flutter_riverpod: ^2.6.1
 
 
 dependency_overrides:

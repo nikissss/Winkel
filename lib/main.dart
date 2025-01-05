@@ -10,25 +10,27 @@ import 'package:multi_vendor_app/Pages/registerpage.dart';
 import 'package:multi_vendor_app/mainlogin_screen.dart';
 import 'package:multi_vendor_app/provider/cart_provider.dart';
 import 'package:multi_vendor_app/provider/product_provider.dart';
+import 'package:multi_vendor_app/vendor/views/auth/vendor_auth_screen.dart';
 import 'package:multi_vendor_app/vendor/views/screens/main_vendor_screen.dart';
 import 'package:multi_vendor_app/views/buyers/auth/login_screen.dart';
 import 'package:multi_vendor_app/views/buyers/auth/register_screen.dart';
 import 'package:multi_vendor_app/views/main_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart' as riverpod;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await FirebaseAppCheck.instance.activate();
-  runApp(
-    MultiProvider(
+  runApp(riverpod.ProviderScope(
+    child: MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ProductProvider()),
         ChangeNotifierProvider(create: (_) => CartProvider()),
       ],
       child: MyApp(),
     ),
-  );
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -54,7 +56,8 @@ class MyApp extends StatelessWidget {
           height: 100, // Adjust height
           child: Image.asset('assets/logo.png'), // Replace with your image path
         ),
-        nextScreen: MainloginScreen(),
+        nextScreen: MainloginScreen(), //VendorAuthScreen(),
+        //MainloginScreen(),
         // MainScreen(),
         splashTransition: SplashTransition.fadeTransition,
         backgroundColor: Color.fromARGB(255, 218, 193, 174),

@@ -91,7 +91,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(0.0),
               child: Text(
                 '\$' +
                     ' ' +
@@ -107,7 +107,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             Text(
               widget.productData['productName'],
               style: TextStyle(
-                fontSize: 22,
+                fontSize: 16,
                 letterSpacing: 4,
                 fontWeight: FontWeight.bold,
               ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:multi_vendor_app/vendor/controllers/vendor_login_screen.dart';
+import 'package:multi_vendor_app/vendor/views/auth/vendor_auth_screen.dart';
 import 'package:multi_vendor_app/vendor/views/screens/landing_screen.dart';
 import 'package:multi_vendor_app/views/buyers/auth/login_screen.dart';
 
@@ -27,7 +28,7 @@ class MainloginScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => VendorLoginScreen()));
+                          builder: (context) => VendorAuthScreen()));
                 },
               )
             ],

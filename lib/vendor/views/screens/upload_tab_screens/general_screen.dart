@@ -1,5 +1,3 @@
-
-
 // import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:flutter/material.dart';
 // import 'package:multi_vendor_app/provider/product_provider.dart';
@@ -24,7 +22,7 @@
 //     .get().then((QuerySnapshot querySnapshot){
 //       querySnapshot.docs.forEach((doc){
 //     setState(() {
-      
+
 //       _categoryList.add(doc['categoryName']);
 //     });
 //       });
@@ -47,7 +45,7 @@
 //   @override
 //   Widget build(BuildContext context) {
 //    super.build(context);
-//    final ProductProvider _productProvider = 
+//    final ProductProvider _productProvider =
 //    Provider.of<ProductProvider>(context);
 //     return Scaffold(
 // body: Padding(
@@ -136,7 +134,7 @@
 //       border: OutlineInputBorder(
 //         borderRadius: BorderRadius.circular(10)
 //       ),
-//      ), 
+//      ),
 //      ),
 //      Row(
 //       children: [
@@ -150,7 +148,7 @@
 //          _productProvider.getFormData(scheduleDate: value) ;
 // });
 //       });
-// }, 
+// },
 // child: Text('Schedule'),
 // ),
 // if(_productProvider.productData['scheduleDate']!=null)
@@ -179,7 +177,8 @@ class GeneralScreen extends StatefulWidget {
   State<GeneralScreen> createState() => _GeneralScreenState();
 }
 
-class _GeneralScreenState extends State<GeneralScreen> with AutomaticKeepAliveClientMixin {
+class _GeneralScreenState extends State<GeneralScreen>
+    with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 
@@ -194,7 +193,8 @@ class _GeneralScreenState extends State<GeneralScreen> with AutomaticKeepAliveCl
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final ProductProvider _productProvider = Provider.of<ProductProvider>(context);
+    final ProductProvider _productProvider =
+        Provider.of<ProductProvider>(context);
 
     final Stream<QuerySnapshot> _categoryStream =
         FirebaseFirestore.instance.collection('categories').snapshots();
@@ -223,7 +223,8 @@ class _GeneralScreenState extends State<GeneralScreen> with AutomaticKeepAliveCl
                 validator: (value) =>
                     value!.isEmpty ? 'Enter Product Price' : null,
                 onChanged: (value) {
-                  _productProvider.getFormData(productPrice: double.parse(value));
+                  _productProvider.getFormData(
+                      productPrice: double.parse(value));
                 },
                 decoration: InputDecoration(
                   labelText: 'Enter Product Price',
@@ -247,7 +248,8 @@ class _GeneralScreenState extends State<GeneralScreen> with AutomaticKeepAliveCl
               // Categories Dropdown
               StreamBuilder<QuerySnapshot>(
                 stream: _categoryStream,
-                builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                builder: (BuildContext context,
+                    AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return CircularProgressIndicator();
                   }
@@ -255,14 +257,13 @@ class _GeneralScreenState extends State<GeneralScreen> with AutomaticKeepAliveCl
                     return Text('Error fetching categories');
                   }
 
-                  List<DropdownMenuItem<String>> categoryItems = snapshot.data!.docs
-                      .map((doc) {
-                        return DropdownMenuItem<String>(
-                          value: doc['categoryName'],
-                          child: Text(doc['categoryName']),
-                        );
-                      })
-                      .toList();
+                  List<DropdownMenuItem<String>> categoryItems =
+                      snapshot.data!.docs.map((doc) {
+                    return DropdownMenuItem<String>(
+                      value: doc['categoryName'],
+                      child: Text(doc['categoryName']),
+                    );
+                  }).toList();
 
                   return DropdownButtonFormField(
                     hint: Text('Select Category'),
@@ -319,7 +320,8 @@ class _GeneralScreenState extends State<GeneralScreen> with AutomaticKeepAliveCl
                   ),
                   if (_productProvider.productData['scheduleDate'] != null)
                     Text(
-                      formattedDate(_productProvider.productData['scheduleDate']),
+                      formattedDate(
+                          _productProvider.productData['scheduleDate']),
                     ),
                 ],
               ),

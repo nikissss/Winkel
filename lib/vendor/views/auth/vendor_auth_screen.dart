@@ -1,4 +1,3 @@
-
 // import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider, PhoneAuthProvider, GoogleAuthProvider;
 // import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 // import 'package:flutter/material.dart';
@@ -24,7 +23,7 @@
 //             providers: [
 //               EmailAuthProvider(),
 //               // GoogleProviderConfiguration(
-//               //   clientId: '1:6329481609:android:4d8e8a3e0cb52d4c99c958', 
+//               //   clientId: '1:6329481609:android:4d8e8a3e0cb52d4c99c958',
 //               // ),
 //               // PhoneProviderConfiguration(),
 //             ],
@@ -53,7 +52,6 @@
 // class VendorAuthScreen extends StatefulWidget {
 //   const VendorAuthScreen({super.key});
 
-
 //   @override
 //   State<VendorAuthScreen> createState() => _VendorAuthScreenState();
 // }
@@ -79,7 +77,6 @@ import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_vendor_app/vendor/views/screens/landing_screen.dart';
 
-
 class VendorAuthScreen extends StatelessWidget {
   const VendorAuthScreen({super.key});
 
@@ -98,7 +95,8 @@ class VendorAuthScreen extends StatelessWidget {
         }
 
         // Render your application if authenticated
-        return  LandingScreen();
+
+        return LandingScreen();
         // return const Text('Authenticated');
       },
     );

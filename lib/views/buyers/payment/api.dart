@@ -11,13 +11,13 @@ Future<Map> fetchPID(double amount) async {
     }, body: {
       "return_url": "https://example.com/",
       "website_url": "https://example.com/",
-      "amount": (10 * 100).toString(),
+      "amount": (amount * 100).toString(),
       "purchase_order_id": "test1211",
       "purchase_order_name": "test",
     });
-    // if (amount > 1000) {
-    //   amount = 100;
-    // }
+    if (amount > 1000) {
+      amount = 100;
+    }
     print(response.body);
     return json.decode(response.body);
   } catch (e) {
