@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multi_vendor_app/views/buyers/innerscreens/delivery_chatapp.dart';
 
 import 'package:multi_vendor_app/views/buyers/innerscreens/ordertracking.dart';
 // Import the existing OrderTrackingMap
@@ -50,8 +51,29 @@ class _DeliveryChatPageState extends State<DeliveryChatPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               // Chat box
-              Padding(
-                padding: const EdgeInsets.all(16.0),
+              // Padding(
+              //   padding: const EdgeInsets.all(16.0),
+              //   child: Container(
+              //     color: Colors.black.withOpacity(0.5),
+              //     child: ListTile(
+              //       leading: Icon(Icons.chat, color: Colors.white),
+              //       title: Text(
+              //         'Chat with ${widget.deliveryBoyName}',
+              //         style: TextStyle(color: Colors.white),
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ChatScreen(
+                          deliveryPersonName: widget.deliveryBoyName),
+                    ),
+                  );
+                },
                 child: Container(
                   color: Colors.black.withOpacity(0.5),
                   child: ListTile(

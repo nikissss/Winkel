@@ -67,7 +67,7 @@ class _UploadScreenState extends State<UploadScreen> {
                 backgroundColor: Colors.yellow.shade900,
               ),
               onPressed: () async {
-                EasyLoading.show(status: 'Please Wait...');
+                // EasyLoading.show(status: 'Please Wait...');
                 if (_formKey.currentState!.validate()) {
                   final productId = Uuid().v4();
                   await _firestore.collection('products').doc(productId).set({

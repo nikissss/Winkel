@@ -22,7 +22,7 @@ class _KhaltiPaymentPageState extends State<KhaltiPaymentPage> {
     print("Initializing Khalti with response: ${widget.response}");
 
     final payConfig = KhaltiPayConfig(
-      publicKey: "3995b70bfaca41ce8e0b0e1f88d9a133",
+      publicKey: "51355047fc46441fa79f08294f36fa06",
       pidx: widget.response["pidx"] ?? "",
       environment: Environment.test,
     );

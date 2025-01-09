@@ -760,7 +760,8 @@ import 'package:multi_vendor_app/models/cart_attributes.dart';
 //     notifyListeners();
 //   }
 // }
-import 'package:flutter/foundation.dart'; // Ensure this import is present for ChangeNotifier
+import 'package:flutter/foundation.dart';
+import 'package:multi_vendor_app/provider/product_provider.dart'; // Ensure this import is present for ChangeNotifier
 
 class CartProvider with ChangeNotifier {
   final Map<String, CartAttr> _cartItems = {}; // This is your cart items map
@@ -907,6 +908,7 @@ class CartProvider with ChangeNotifier {
     }
     saveCartToFirestore(); // Save cart after modification
     notifyListeners();
+    // final double totalprice = totalPrice;
   }
 
   Future<void> placeOrder(CartAttr cartData) async {

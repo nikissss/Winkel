@@ -7,7 +7,7 @@ Future<Map> fetchPID(double amount) async {
 
     var url = Uri.https("a.khalti.com", "/api/v2/epayment/initiate/");
     var response = await http.post(url, headers: {
-      "Authorization": "Key c221fd37ab59411caf882c57e651f995"
+      "Authorization": "Key a167982cacc24a59a75676b19ebfdff6"
     }, body: {
       "return_url": "https://example.com/",
       "website_url": "https://example.com/",

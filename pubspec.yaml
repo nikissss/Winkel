@@ -65,6 +65,7 @@ dependencies:
   riverpod: ^2.6.1
   flutter_stripe: ^11.3.0
   flutter_riverpod: ^2.6.1
+  mailer: ^6.4.0 
 
 
 dependency_overrides:
